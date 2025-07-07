@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-main">
+  <div class="container-main-inputs">
+    <div class="container-inputs">
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="nome" />
+      <div *ngIf="submitted && f['nome'].errors?.['required']">
+        Nome é obrigatório
+      </div>
+    </div>
+
+    <div class="container-inputs">
+      <label for="email">Email</label>
+      <input type="text" id="email" formControlName="email" />
+      <div *ngIf="submitted && f['email'].errors">
+        <div *ngIf="f['email'].errors?.['required']">Email é obrigatório</div>
+        <div *ngIf="f['email'].errors?.['email']">Email Invalido</div>
+      </div>
+    </div>
+
+    <div class="container-inputs">
+      <label for="password">Senha</label>
+      <input type="password" id="password" formControlName="senha" />
+      <div *ngIf="submitted && f['senha'].errors">
+        <div *ngIf="f['senha'].errors?.['required']">Senha é obrigatório</div>
+        <div *ngIf="f['senha'].errors?.['minlength']">
+          Senhe deve ter pelo menos 6 caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="container-inputs">
+      <label for="confirm-password">Confirmar Senha</label>
+      <input
+        type="password"
+        id="confirm-password"
+        formControlName="confirmaSenha"
+      />
+
+      <div *ngIf="submitted && f['confirmaSenha'].errors?.['mismatch']">
+        As senhas não coincidem
+      </div>
+    </div>
+  </div>
+
+  <div class="container-buttons">
+    <button type="submit">Enviar</button>
+    <button type="button" (click)="onReset()">Limpar</button>
+  </div>
+
+  <span *ngIf="userCreatedSucessfully">Usuario criado com sucesso!</span>
+</form>

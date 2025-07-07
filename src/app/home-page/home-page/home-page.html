@@ -1,0 +1,90 @@
+<div class="container-home-page">
+  <app-form-create-user-component></app-form-create-user-component>
+
+  <div class="container-all-user">
+    <h1>Todos Usuarios</h1>
+
+    <div class="container-list-user">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Criado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of users">
+            <td class="td-info-item">{{ item.Nome }}</td>
+            <td class="td-info-item">{{ item.Email }}</td>
+            <td class="td-info-item">{{ item.CreateAt }}</td>
+            <td>
+              <button
+                class="button-action-user"
+                (click)="onCLickShowModalDeleteRegister(item)"
+              >
+                DELETE
+              </button>
+            </td>
+            <td>
+              <button
+                class="button-action-user"
+                (click)="onClickUpdateRegister(item)"
+              >
+                UPDATE
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="container-modal-show-delete"
+      *ngIf="showModalConfirmDeleteRegister"
+    >
+      <div class="container-inner-modal-delete">
+        <h1>Confirmar deleção</h1>
+
+        <div class="container-buttons">
+          <button (click)="onClickCancelDeletion()">Cancelar</button>
+          <button (click)="onCLickDeleteRegister()">Deletar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-modal-show-delete" *ngIf="showModalUpdateInfoUser">
+      <div class="container-inner-modal-delete">
+        <h1>Edição de dados</h1>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="container-main-inputs">
+            <div class="container-inputs">
+              <label for="name-update">Name</label>
+              <input type="text" id="name-update" formControlName="nome" />
+              <div *ngIf="submitted && f['nome'].errors?.['required']">
+                Nome é obrigatório
+              </div>
+            </div>
+
+            <div class="container-inputs">
+              <label for="email-update">Email</label>
+              <input type="text" id="email-update" formControlName="email" />
+              <div *ngIf="submitted && f['email'].errors">
+                <div *ngIf="f['email'].errors?.['required']">
+                  Email é obrigatório
+                </div>
+                <div *ngIf="f['email'].errors?.['email']">Email Invalido</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-buttons">
+            <button (click)="onClickCancelUpdate()">Cancelar</button>
+            <button type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
