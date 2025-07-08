@@ -9,3 +9,16 @@ const decryptedString = bytes.toString(CryptoJS.enc.Utf8);
 
 const decryptedData = JSON.parse(decryptedString);
 ResultGetUserFromLocalStorage.user = decryptedData;
+
+
+git checkout -b 'adicionar-postgresql' - cria uma nova branch, no projeto para sair do main, depois ela volta
+git branch -d <nome_da_branch> - deletar um breacn do "checkout"
+git branch - para ver qual branch eu estou
+git checkout nome_da_branch - troca de branch
+pull request - para juntar a branch nova com a "MAIN" - depois de do pull request - tem o marge
+git log - para ver os commit esperando - e depois apertar "q"
+git merge
+
+depois de criar a branch, com "checkout" e fazer os commit tipo "git add ." depois " git commit -a -m "algum texto" " e for ajutando commit
+você tem que fazer " git push origin nome-da-sua-branch ", assim ela vai lá para o github vai estár assim "pull request", cria pull reques, para alguem da equipe fazer um "Merge pull request"
+Normalmente que faz esse "MERGE" é um lider algo assim, mas como é seu projeto você que faz, depois que concluir o MERGE no git tem que puchar para maquina local antes de deletar BRANCH "git pull"
