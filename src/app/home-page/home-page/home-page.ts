@@ -50,6 +50,8 @@ export class HomePage implements OnInit {
   }
 
   whichRegisterDelete: User | null = null;
+  form!: FormGroup;
+  submitted = false;
 
   onCLickShowModalDeleteRegister(item: User) {
     this.showModalConfirmDeleteRegister = true;
@@ -61,15 +63,17 @@ export class HomePage implements OnInit {
     this.whichRegisterDelete = item;
 
     this.renderFormFields();
+
+    this.form.setValue({
+      nome: item.Nome,
+      email: item.Email,
+    });
   }
 
   onClickCancelDeletion() {
     this.showModalConfirmDeleteRegister = false;
     this.whichRegisterDelete = null;
   }
-
-  form!: FormGroup;
-  submitted = false;
 
   onClickCancelUpdate() {
     this.submitted = false;
