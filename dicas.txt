@@ -22,3 +22,7 @@ git merge
 depois de criar a branch, com "checkout" e fazer os commit tipo "git add ." depois " git commit -a -m "algum texto" " e for ajutando commit
 você tem que fazer " git push origin nome-da-sua-branch ", assim ela vai lá para o github vai estár assim "pull request", cria pull reques, para alguem da equipe fazer um "Merge pull request"
 Normalmente que faz esse "MERGE" é um lider algo assim, mas como é seu projeto você que faz, depois que concluir o MERGE no git tem que puchar para maquina local antes de deletar BRANCH "git pull"
+
+const saltRounds = 10;
+const salt = await bcrypt.genSalt(saltRounds);
+const hash = await bcrypt.hash(password, salt);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -12,7 +12,9 @@ import {
   templateUrl: './form-create-user-component.html',
   styleUrl: './form-create-user-component.css',
 })
-export class FormCreateUserComponent implements OnInit {
+export class FormCreateUserComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   form!: FormGroup;
   submitted = false;
 
@@ -30,6 +32,10 @@ export class FormCreateUserComponent implements OnInit {
         validators: this.matchPasswords('senha', 'confirmaSenha'),
       }
     );
+  }
+
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   matchPasswords(senhaKey: string, confirmaKey: string) {
@@ -84,5 +90,9 @@ export class FormCreateUserComponent implements OnInit {
     }
 
     console.log(user);
+  }
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 }
