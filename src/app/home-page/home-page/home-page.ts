@@ -31,6 +31,7 @@ export class HomePage implements OnInit {
       next: (success: User[]) => {
         const array: User[] = success;
         this.users = array;
+        console.log('test');
       },
       error: (error) => {
         if (error.status === 400) {
