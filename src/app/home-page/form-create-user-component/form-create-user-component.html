@@ -11,20 +11,22 @@
     <div class="container-inputs">
       <label for="email">Email</label>
       <input type="text" id="email" formControlName="email" />
-      <div *ngIf="submitted && f['email'].errors">
-        <div *ngIf="f['email'].errors?.['required']">Email é obrigatório</div>
-        <div *ngIf="f['email'].errors?.['email']">Email Invalido</div>
+      <div *ngIf="submitted && f['email'].errors?.['required']">
+        Email é obrigatório
+      </div>
+      <div *ngIf="submitted && f['email'].errors?.['email']">
+        Email Invalido
       </div>
     </div>
 
     <div class="container-inputs">
       <label for="password">Senha</label>
       <input type="password" id="password" formControlName="senha" />
-      <div *ngIf="submitted && f['senha'].errors">
-        <div *ngIf="f['senha'].errors?.['required']">Senha é obrigatório</div>
-        <div *ngIf="f['senha'].errors?.['minlength']">
-          Senhe deve ter pelo menos 6 caracteres
-        </div>
+      <div *ngIf="submitted && f['senha'].errors?.['required']">
+        Senha é obrigatório
+      </div>
+      <div *ngIf="submitted && f['senha'].errors?.['minlength']">
+        Senha deve ter pelo menos 6 caracteres
       </div>
     </div>
 
@@ -35,14 +37,17 @@
         id="confirm-password"
         formControlName="confirmaSenha"
       />
+      <div *ngIf="submitted && f['confirmaSenha'].errors?.['required']">
+        Confirma Senha é obrigatório
+      </div>
 
       <div *ngIf="submitted && f['confirmaSenha'].errors?.['mismatch']">
-        As senhas não coincidem
+        As senha não se coincidem
       </div>
     </div>
   </div>
 
-  <div class="container-buttons">
+  <div class="container-button">
     <button type="submit">Enviar</button>
     <button type="button" (click)="onReset()">Limpar</button>
   </div>

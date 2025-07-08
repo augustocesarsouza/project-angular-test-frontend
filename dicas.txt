@@ -1,0 +1,11 @@
+const secretKey = environment.KEY_USER ?? environment.KEY_USER;
+const userDTO = success.data.userDTO;
+const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userDTO), secretKey).toString();
+
+
+
+const bytes = CryptoJS.AES.decrypt(userLocalStorage, secretKey);
+const decryptedString = bytes.toString(CryptoJS.enc.Utf8);
+
+const decryptedData = JSON.parse(decryptedString);
+ResultGetUserFromLocalStorage.user = decryptedData;

@@ -32,8 +32,29 @@ export class FormCreateUserComponent implements OnInit {
     );
   }
 
+  matchPasswords(senhaKey: string, confirmaKey: string) {
+    return (group: AbstractControl) => {
+      const senha = group.get(senhaKey)?.value;
+      const confirmaSenha = group.get(confirmaKey)?.value;
+
+      if (senha !== confirmaSenha) {
+        const obj = { mismatch: true };
+        group.get(confirmaKey)?.setErrors(obj);
+
+        return obj;
+      }
+
+      return null;
+    };
+  }
+
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.form.reset();
   }
 
   userCreatedSucessfully = false;
@@ -63,25 +84,5 @@ export class FormCreateUserComponent implements OnInit {
     }
 
     console.log(user);
-  }
-
-  onReset() {
-    this.submitted = false;
-    this.form.reset();
-  }
-
-  matchPasswords(senhaKey: string, confirmaKey: string) {
-    return (group: AbstractControl) => {
-      const senha = group.get(senhaKey)?.value;
-      const confirmaSenha = group.get(confirmaKey)?.value;
-
-      if (senha !== confirmaSenha) {
-        group.get(confirmaKey)?.setErrors({ mismatch: true });
-
-        return { mismatch: true };
-      }
-
-      return null;
-    };
   }
 }
